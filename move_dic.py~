@@ -1,7 +1,0 @@
-d = {
-    "Oil Spill": 0,
-    "Species Protection": 1
-    }
-    
-def get(pname):
-    return d[pname]
