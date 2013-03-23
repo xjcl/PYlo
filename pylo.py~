@@ -1,0 +1,20 @@
+# Phylo Double Dynasty!!
+
+# Concept: Have two compatible species on each side.
+
+import ee
+import be
+#import phylo # remove later
+
+def main():
+    print
+    print
+    print
+    h_n = raw_input("Your name: ")
+    Human = ee.Entity(h_n, ["North American Beaver", "Hypsibius dujardini"])
+    AI = ee.Entity("ECOLOGY ADMIN DARWIN", ["North American Beaver", "Hypsibius dujardini"])
+    test = be.Battle(Human, AI)
+    test.run()
+
+if __name__ == "__main__":
+    main()
