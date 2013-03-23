@@ -1,4 +1,4 @@
-# handles events
+# handles phylomon
 import event_dic
 
 class Event(object): # contrary to its name, it is an event card

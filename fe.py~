@@ -5,7 +5,7 @@ class Field(object):
     def __init__(self, phomes):
         self.homes = phomes
         if len(self.homes) == 2: # len(self.homes) == number of players
-            self.data = \
+            self.f = \
             [[Square(self, 0, 0, None), Square(self, 0, 1, None),\
             Square(self, 0, 2, None), Square(self, 0, 3, None)], \
             \
@@ -19,14 +19,11 @@ class Field(object):
     
     
     def get_square(self, py, px):
-        return self.data[py][px]
-    
-    def get_data(self):
-        return self.data
+        return self.f[py][px]
     
     def lay(self, py, px, pcard):
         # don exits?
-        if 0 <= py < len(self.data) and 0 <= px < len(self.data[0]): # FIXME # is_number()
+        if 0 <= py < len(self.f) and 0 <= px < len(self.f[0]): # FIXME # is_number()
             lsquare = self.get_square(py, px)
             if pcard.get_type() == "Phylo":
                 if lsquare.has_None(): # if None / empty

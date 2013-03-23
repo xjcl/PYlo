@@ -4,6 +4,7 @@ from shlex import split
 def npt(player, pcmd):
     cmds = split(pcmd)
     if len(cmds) == 1 and cmds[0] == "pass":
+        player.moves_left_equals_minus_one()
         print "%s passed." % (player.get_name())
     
     

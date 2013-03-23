@@ -10,5 +10,3 @@ class Card(object):
         return self.type
         
     def update(self):
-        if self.type == "Event"
-            self.content.update()

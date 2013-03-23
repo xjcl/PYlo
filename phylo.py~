@@ -20,7 +20,7 @@ class Phylo(object):
         self.flight = self.dic["flight"]
         self.spread = self.dic["spread"]
         self.artist = self.dic["artist"]
-        self.img_url = self.dic["img_url"]
+        self.url = self.dic["url"]
     
         self.move_left = self.move # left as in left over, dummy.
     
