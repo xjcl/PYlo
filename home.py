@@ -2,10 +2,16 @@ class Home(object):
     def __init__(self, pid):
         self.terrain = [0, 1, 2, 3, 4, 5, 6]
         self.climate = [0, 1, 2, 3]
-        self.foodchain = 1
+        self.foodchain = 9001 # not applicable
         self.scale = 1
         self.id = pid # for different home cards # TODO
 
+    def get_name(self):
+        return "Home card"
+        
+    def get_type(self):
+        return "Home"
+        
     def get_terrain(self):
         return self.terrain
         

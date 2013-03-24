@@ -4,7 +4,7 @@ d = {
         "latin": "Castor canadensis",
         "alt": "Castor canadensis is a national symbol for Canada.",
         
-        "is_meat": True,
+        "is_meat": False,
         "scale": 6,
         "foodchain": 2,
         "diet": 2,
@@ -28,7 +28,7 @@ d = {
         "latin": "Hypsibius dujardini",
         "alt": "Hypsibius dujardini is the only animal known to be able to survive the vacuum of space.",
         
-        "is_meat": False,
+        "is_meat": True,
         "scale": 3,
         "foodchain": 2,
         "diet": 2,

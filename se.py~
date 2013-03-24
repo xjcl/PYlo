@@ -52,7 +52,6 @@ class Square(object):
                     compt = True
                 if self.test_foodchain(lPhylo, neigh):
                     foodc = True
-        return compt and foodc
             
     def lay(self, pcard):
         if self.has_None():

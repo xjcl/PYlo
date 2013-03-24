@@ -22,26 +22,50 @@ class Battle(object):
                 a_stack.update()
         
     def is_story(self):
-        return self.is_story    
+        return self.is_story  
         
+    def get_field(self):
+        return self.fld  
+
+    def get_number_of_players(self):
+        return len(self.players)  
+
+    def get_cards_in_hands(self):
+        la = []
+        for ply in self.players:
+            la.append(ply.get_cards_in_hand())
+        return la
+
+    def get_cards_in_decks(self):
+        la = []
+        for ply in self.players:
+            la.append(ply.get_cards_in_deck())
+        return la
+        
+    def get_number_of_players(self):
+        return len(self.players) 
+                
     def run(self):
-        if self.is_story:
+        if self.is_story and self.get_number_of_players() == 2:
             print "%s would like to battle!" % self.players[1].get_name()
         else:
             pass # TODO
+        for ply in self.players:
+            ply.get_deck().shuffle()
+            ply.draw(5) # FIXME # error catching here if I have time # or check deck at init
         while self.is_done == False:
             for ply in self.players:
                 ply.set_moves_left(3)
+                print "\n"
                 while ply.get_moves_left():
                 
                     if ply.get_type() == 0:
                         npt_txt = raw_input("--> ") # FIXME # TODO # count down!
                     elif ply.get_type() == 1:
-                        npt_txt = choice(["pass"]) # hehe
+                        npt_txt = choice(["pass", "d 0"]) # hehe
                         
-                    if npt_txt == "exit":
-                        raise SystemExit
-                    ply.moves_left_equals_minus_one()
-                    me.npt(ply, npt_txt)
-                    print "%s has %d moves left." % (ply.get_name(), ply.get_moves_left())
+                    if me.npt(self, ply, npt_txt) == True: # False if command is a bunch of malarki
+                        ply.moves_left_equals_minus_one()
+                    print "%s has %d moves left.\n" % (ply.get_name(), ply.get_moves_left())
+                    
             self.update()

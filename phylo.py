@@ -9,6 +9,7 @@ class Phylo(object):
         self.common = self.dic["common"]
         self.latin = self.dic["latin"]
         self.alt = self.dic["alt"]
+        self.is_meat = self.dic["is_meat"]
         self.scale = self.dic["scale"]
         self.foodchain = self.dic["foodchain"]
         self.diet = self.dic["diet"]
@@ -35,11 +36,23 @@ class Phylo(object):
     def get_scale(self):
         return self.scale
         
+    def is_meat(self):
+        return self.is_meat
+        
+    def get_terrain(self):
+        return self.terrain
+        
+    def get_climate(self):
+        return self.climate
+        
+    def get_foodchain(self):
+        return self.foodchain
+        
+    def get_diet(self):
+        return self.diet
+        
     def get_name(self):
         return self.common # include latin name?
-        
-    def set_scale(self, pnum):
-        self.scale = pnum
         
     def get_dic(self):
         return self.dic
