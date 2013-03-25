@@ -15,10 +15,45 @@ class Field(object):
             [Square(self, 2, 0, None), Square(self, 2, 1, None),
             Square(self, 2, 2, None), Square(self, 2, 3, None)]]
         
-    #def check_move(self, move):
+    def extend_right(self):
+        for i in range(len(self.data)):
+            self.data[i].append(Square(self, i, len(self.data[i]), None))
     
+    def extend_down(self):
+        self.data.append([])
+        for i in range(len(self.data[-2])):
+            self.data[-1].append(Square(self, len(self.data)-1, i, None))
+            
+    def extend_left(self):
+        for rw in self.data:
+            for sq in rw:
+                sq.set_x(sq.get_x()+1)
+        for i in range(len(self.data)):
+            self.data[i].insert(0, Square(self, i, 0, None)) # FIXME TODO !!!
+    
+    def extend_up(self):
+        print self.data
+        for rw in self.data:
+            for sq in rw:
+                sq.set_y(sq.get_y()+1)
+        print self.data
+        self.data.insert(0, []) # FIXME TODO !!!
+        for i in range(len(self.data[1])):
+            self.data[0].append(Square(self, 0, i, None))
+            
+    def correct_size(self, py, px):
+        if py == 0:
+            self.extend_up()
+        if px == 0:
+            self.extend_left()
+        if py == len(self.data)-1:
+            self.extend_down()
+        if px == len(self.data[0])-1:
+            self.extend_right()
+            
     def square_exits(self, py, px):
         return 0 <= py < len(self.data) and 0 <= px < len(self.data[0]) # FIXME # is_number()
+        # ^implement instead of "try:" ? # TODO
     
     def pprint(self):
         dat = []

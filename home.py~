@@ -1,16 +1,18 @@
 class Home(object):
     def __init__(self, pid):
+        self.name = "Home card"
         self.terrain = [0, 1, 2, 3, 4, 5, 6]
         self.climate = [0, 1, 2, 3]
         self.foodchain = 9001 # not applicable
         self.scale = 0
+        self.is_meat = False
         self.id = pid # for different home cards # TODO
 
     def get_name(self):
-        return "Home card"
+        return self.name
         
     def is_meat(self):
-        return False
+        return self.is_meat
         
     def get_type(self):
         return "Home"

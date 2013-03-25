@@ -8,6 +8,18 @@ class Square(object):
         else:
             self.stack = None
     
+    def set_x(self, new_x):
+        self.x = new_x
+    
+    def set_y(self, new_y):
+        self.y = new_y
+    
+    def get_x(self):
+        return self.x
+    
+    def get_y(self):
+        return self.y
+    
     def is_compatible(self, p1, p2):
         terrain_match = False
         for a_terrain in p1.get_terrain():
@@ -19,9 +31,7 @@ class Square(object):
                 return terrain_match # if this code is executed, climate_match == True
                 
     def good_foodchain(self, new_p, old_p):
-        print 0
         if new_p.get_foodchain() == 1:
-            print 1
             return True
         else:
             if new_p.get_diet() == 3: # omnivore
@@ -59,8 +69,6 @@ class Square(object):
                     compt = True
                 if self.test_foodchain(lPhylo, neigh_p):
                     foodc = True
-        print compt
-        print foodc
         return compt and foodc
             
     def lay(self, pcard):

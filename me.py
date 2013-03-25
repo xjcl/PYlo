@@ -13,7 +13,7 @@ def npt(pbattle, player, pcmd):
     elif len(cmds) == 1 and (cmds[0] == "exit" or cmds[0] == "e" or cmds[0] == "quit" or cmds[0] == "q"):
         raise SystemExit
     elif len(cmds) == 1 and (cmds[0] == "field" or cmds[0] == "f"):
-        pbattle.fld.pprint()
+        pbattle.get_field().pprint()
     elif len(cmds) == 1 and (cmds[0] == "hand" or cmds[0] == "h"):
         player.get_hand().pprint()
     elif len(cmds) == 1 and (cmds[0] == "cards_in_hands" or cmds[0] == "cih"):
@@ -40,6 +40,8 @@ def npt(pbattle, player, pcmd):
             lcard = player.get_hand().pop(int(cmds[1]))
             if lcard:
                 if pbattle.get_field().get_square(int(cmds[2]), int(cmds[3])).lay(lcard):
+                    pbattle.get_field().correct_size(int(cmds[2]), int(cmds[3]))
+                    print "%s played %s on square %s %s." % (player.get_name(), lcard.get_cont().get_name(), cmds[2], cmds[3])
                     return True
                 else:
                     player.get_hand().append(lcard)

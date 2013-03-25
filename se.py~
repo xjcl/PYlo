@@ -8,7 +8,20 @@ class Square(object):
         else:
             self.stack = None
     
+    def set_x(self, new_x):
+        self.x = new_x
+    
+    def set_y(self, new_y):
+        self.y = new_y
+    
+    def get_x(self):
+        return self.x
+    
+    def get_y(self):
+        return self.y
+    
     def is_compatible(self, p1, p2):
+        terrain_match = False
         for a_terrain in p1.get_terrain():
             if a_terrain in p2.get_terrain():
                 terrain_match = True

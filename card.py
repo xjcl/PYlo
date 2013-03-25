@@ -1,6 +1,7 @@
 class Card(object):
-    def __init__(self, pcontent):
+    def __init__(self, pcontent, pwner):
         self.content = pcontent
+        self.owner = pwner
     
     def get_content(self):
         return self.content
@@ -10,6 +11,9 @@ class Card(object):
         
     def get_type(self):
         return self.content.get_type()
+        
+    def get_owner(self):
+        return self.owner
         
     def update(self):
         if self.get_type() == "Event":

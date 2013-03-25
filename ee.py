@@ -11,20 +11,24 @@ from random import shuffle
 
 class Entity(object):
     class Deck(object):
-        def __init__(self, pdeck, phci):
+        def __init__(self, pdeck, phci, pwner):
             self.cont = []            # @below: get home card its own class in an Entity?
-            self.hc = card.Card(home.Home(phci)) # is initing with strings such a good idea? idk.
+            self.owner = pwner
+            self.hc = card.Card(home.Home(phci, self.owner), self.owner) # is initing with strings such a good idea? idk.
             for a_card_name in pdeck:
                 if phylo_dic.get(a_card_name):
-                    self.cont.append(card.Card(phylo.Phylo(a_card_name)))
+                    self.cont.append(card.Card(phylo.Phylo(a_card_name), self.owner))
                 if event_dic.get(a_card_name): # in case there are terrain cards or stuff to implement
-                    self.cont.append(card.Card(event.Event(a_card_name)))
+                    self.cont.append(card.Card(event.Event(a_card_name), self.owner))
             
         def get_cont(self):
             return self.cont
             
         def get_size(self):
             return len(self.cont)    
+            
+        def get_owner(self):
+            return self.owner
             
         def append(self, pl):
             self.cont.append(pl)
@@ -45,14 +49,18 @@ class Entity(object):
     
     
     class Hand(object):
-        def __init__(self):
+        def __init__(self, pwner):
             self.cont = []
+            self.owner = pwner
             
         def get_cont(self):
             return self.cont
             
         def get_size(self):
             return len(self.cont)    
+            
+        def get_owner(self):
+            return self.owner
             
         def draw(self, pl):
             self.cont.append(pl)
@@ -81,11 +89,15 @@ class Entity(object):
             
             
     class Discard_Pile(object):
-        def __init__(self):
+        def __init__(self, pwner):
             self.cont = []
+            self.owner = pwner
         
         def get_size(self):
             return len(self.cont)
+            
+        def get_owner(self):
+            return self.owner    
             
         def lay(self, lcard):
             self.cont.append(lcard)
@@ -95,12 +107,12 @@ class Entity(object):
     
     def __init__(self, pinfo, pdeck, phci, ptype):
         self.name = pinfo
-        self.deck = Entity.Deck(pdeck, phci) # < This is the "cache deck". The immutable version
+        self.deck = Entity.Deck(pdeck, phci, self) # < This is the "cache deck". The immutable version
         #if self.get_cards_left() < 19: raise SystemExit # error catching my style
         self.moves_left = 0                  # is found in what's currently the pylo.main().
         self.type = ptype # 0: human # 1: dumb AI
-        self.hand = Entity.Hand()
-        self.disc_pile = Entity.Discard_Pile()
+        self.hand = Entity.Hand(self)
+        self.disc_pile = Entity.Discard_Pile(self)
         
     def get_cards_left(self):
         return self.deck.get_size()
