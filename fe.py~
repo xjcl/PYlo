@@ -6,13 +6,13 @@ class Field(object):
         self.homes = phomes
         if len(self.homes) == 2: # len(self.homes) == number of players
             self.data = \
-            [[Square(self, 0, 0, None), Square(self, 0, 1, None),\
-            Square(self, 0, 2, None), Square(self, 0, 3, None)], \
+            [[Square(self, 0, 0, None), Square(self, 0, 1, None),
+            Square(self, 0, 2, None), Square(self, 0, 3, None)], 
             \
-            [Square(self, 1, 0, None), Square(self, 1, 1, phomes[0]),\
+            [Square(self, 1, 0, None), Square(self, 1, 1, phomes[0]),
             Square(self, 1, 2, phomes[1]), Square(self, 1, 3, None)],
             \
-            [Square(self, 2, 0, None), Square(self, 2, 1, None),\
+            [Square(self, 2, 0, None), Square(self, 2, 1, None),
             Square(self, 2, 2, None), Square(self, 2, 3, None)]]
         
     #def check_move(self, move):

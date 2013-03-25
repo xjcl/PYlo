@@ -17,6 +17,7 @@ d = {
         "move": 2,
         "flight": 0,
         "spread": 0,
+        "ofr": 0,
         
         "artist": "Image by Adam Smith",
         "img_url": "http://rupted.deviantart.com/"},
@@ -28,7 +29,7 @@ d = {
         "latin": "Hypsibius dujardini",
         "alt": "Hypsibius dujardini is the only animal known to be able to survive the vacuum of space.",
         
-        "is_meat": False,
+        "is_meat": True,
         "scale": 3,
         "foodchain": 2,
         "diet": 2,
@@ -41,9 +42,37 @@ d = {
         "move": 0.5,
         "flight": 0,
         "spread": 0,
+        "ofr": 0,
         
         "artist": "Image by Akela Taka",
-        "img_url": "akelataka.deviantart.com/"}
+        "img_url": "akelataka.deviantart.com/"},
+        
+        
+        
+    "Giant Kelp": {
+        "common": "Giant Kelp", # inspect Bull Kelp
+        "latin": "Macrocystis pyrifera",
+        "alt": "Macrocystis pyrifera is one of the fastest-growing organisms on Earth.",
+        
+        "is_meat": False,
+        "scale": 8,
+        "foodchain": 1,
+        "diet": 0,
+        "points": 4,
+        "tree": ["Chromalveolata", "Heterokontophyta", "Phaeophyceae"],
+        
+        "terrain": [6],
+        "climate": [1, 2],
+        
+        "move": 0,
+        "flight": 0,
+        "spread": 0,
+        "ofr": 0,
+        #"is_plankton": False,
+        #"is_algae": False,
+        
+        "artist": "Image by Lindsay Chetek",
+        "img_url": "http://www.lindsaychetek.com/"}
     }
     
     

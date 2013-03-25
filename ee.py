@@ -1,6 +1,7 @@
 # entity engine
 # note: pprint is for pretty print
 
+import card
 import phylo
 import event
 import phylo_dic
@@ -12,12 +13,12 @@ class Entity(object):
     class Deck(object):
         def __init__(self, pdeck, phci):
             self.cont = []            # @below: get home card its own class in an Entity?
-            self.hc = home.Home(phci) # is initing with strings such a good idea? idk.
+            self.hc = card.Card(home.Home(phci)) # is initing with strings such a good idea? idk.
             for a_card_name in pdeck:
                 if phylo_dic.get(a_card_name):
-                    self.cont.append(phylo.Phylo(a_card_name))
+                    self.cont.append(card.Card(phylo.Phylo(a_card_name)))
                 if event_dic.get(a_card_name): # in case there are terrain cards or stuff to implement
-                    self.cont.append(event.Event(a_card_name))
+                    self.cont.append(card.Card(event.Event(a_card_name)))
             
         def get_cont(self):
             return self.cont
@@ -70,11 +71,11 @@ class Entity(object):
             
         def pprint(self):
             for i in range(self.get_size()):
-                print "%d: %s" % (i, self.cont[i].get_name())
+                print "%d: %s" % (i, self.cont[i].get_content().get_name())
             
         def pprint2(self):
             for cd in self.cont:
-                print cd.get_name()
+                print cd.get_content().get_name()
                 
                                         
             

@@ -8,7 +8,7 @@ def main():
     deck_2 = ["Hypsibius dujardini", "Hypsibius dujardini", "Hypsibius dujardini",\
               "Hypsibius dujardini", "Hypsibius dujardini", "Hypsibius dujardini",\
               "Hypsibius dujardini", "Hypsibius dujardini", "Hypsibius dujardini"]
-    # TODO: - loader/saver for .phylo-files
+    # TODO: - loader/saver for .phylo-files (i.e. decks; .deck-files?)
     on = "EVOLUTION ADMIN CHARLES DARWIN"
     hn = raw_input("\n\n\nYour name: ")
     hc_1 = 0

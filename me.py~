@@ -9,7 +9,7 @@ from is_number import is_number
 def npt(pbattle, player, pcmd):
     cmds = split(pcmd)
     if pcmd == "":
-        return False
+        pass
     elif len(cmds) == 1 and (cmds[0] == "exit" or cmds[0] == "e" or cmds[0] == "quit" or cmds[0] == "q"):
         raise SystemExit
     elif len(cmds) == 1 and (cmds[0] == "field" or cmds[0] == "f"):
@@ -33,14 +33,17 @@ def npt(pbattle, player, pcmd):
                 lcard = player.discard(int(cmds[1]))
                 if lcard and player.get_cards_left() >= 3:
                     player.draw(3)
-                    print "%s discarded %s and drew three cards." % (player.get_name(), lcard.get_name())
+                    print "%s discarded %s and drew three cards." % (player.get_name(), lcard.get_content().get_name())
                     return True
     elif len(cmds) == 4 and (cmds[0] == "lay" or cmds[0] == "l"):
         if is_number(cmds[1]) and is_number(cmds[2]) and is_number(cmds[3]):
             lcard = player.get_hand().pop(int(cmds[1]))
+            print lcard
             if lcard:
-                pbattle.get_field().get_square(int(cmds[2]), int(cmds[3])).lay(lcard)
-                return True
+                if pbattle.get_field().get_square(int(cmds[2]), int(cmds[3])).lay(lcard):
+                    return True
+                else:
+                    player.get_hand().append(lcard)
     
     
     """if True:

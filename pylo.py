@@ -3,7 +3,7 @@ import be
 
 def main():
     deck_1 = ["North American Beaver", "North American Beaver", "North American Beaver",\
-              "North American Beaver", "North American Beaver", "North American Beaver",\
+              "Giant Kelp", "Giant Kelp", "Giant Kelp",\
               "Hypsibius dujardini", "Hypsibius dujardini", "Hypsibius dujardini"]
     deck_2 = ["Hypsibius dujardini", "Hypsibius dujardini", "Hypsibius dujardini",\
               "Hypsibius dujardini", "Hypsibius dujardini", "Hypsibius dujardini",\

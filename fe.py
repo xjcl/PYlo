@@ -38,7 +38,7 @@ class Field(object):
                 to_p = sy+","+sx
                 print "\b"+to_p+"|",
                 try:
-                    dat.append([to_p, self.get_square(y, x).get_stack()[0].get_name()]) # TODO # display other cards on stack
+                    dat.append([to_p, self.get_square(y, x).get_stack()[0].get_cont().get_name()]) # TODO # display other cards on stack
                 except:
                     dat.append([to_p, "None"])
         print

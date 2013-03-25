@@ -4,7 +4,7 @@ d = {
         "latin": "Castor canadensis",
         "alt": "Castor canadensis is a national symbol for Canada.",
         
-        "is_meat": False,
+        "is_meat": True,
         "scale": 6,
         "foodchain": 2,
         "diet": 2,
@@ -17,6 +17,7 @@ d = {
         "move": 2,
         "flight": 0,
         "spread": 0,
+        "ofr": 0,
         
         "artist": "Image by Adam Smith",
         "img_url": "http://rupted.deviantart.com/"},
@@ -41,6 +42,32 @@ d = {
         "move": 0.5,
         "flight": 0,
         "spread": 0,
+        "ofr": 0,
+        
+        "artist": "Image by Akela Taka",
+        "img_url": "akelataka.deviantart.com/"},
+        
+        
+        
+    "Giant Kelp": {
+        "common": "Giant Kelp", # inspect Bull Kelp
+        "latin": "Macrocystis pyrifera",
+        "alt": "Macrocystis pyrifera is one of the fastest-growing organisms on Earth.",
+        
+        "is_meat": False,
+        "scale": 9,
+        "foodchain": 1,
+        "diet": 0,
+        "points": 4,
+        "tree": ["Chromalveolata", "Heterokontophyta", "Phaeophyceae"],
+        
+        "terrain": [6],
+        "climate": [1, 2],
+        
+        "move": 0,
+        "flight": 0,
+        "spread": 0,
+        "ofr": 0,
         
         "artist": "Image by Akela Taka",
         "img_url": "akelataka.deviantart.com/"}

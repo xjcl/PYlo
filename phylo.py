@@ -22,10 +22,13 @@ class Phylo(object):
         self.spread = self.dic["spread"]
         self.artist = self.dic["artist"]
         self.img_url = self.dic["img_url"]
+        self.ofr = self.dic["ofr"]
     
         self.move_left = self.move # left as in left over, dummy.
     
-    
+    def own_foodchain_rules(self, to_eat):
+        if self.ofr == 0:
+            return None
     
     def update(self):
         self.moveleft = self.move
