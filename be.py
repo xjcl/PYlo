@@ -11,10 +11,17 @@ class Battle(object):
         self.players = aplayers
         self.is_story = story_mode
         self.is_done = False
+        self.round = 0
         lhcards = []
         for ply in aplayers:
             lhcards.append(ply.get_deck().get_home_card())
         self.fld = fe.Field(lhcards)
+    
+    def is_in_round(self):
+        return self.round
+        
+    def next_round(self):
+        self.round += 1
         
     def update(self):
         for a_row in self.fld.data:
@@ -60,12 +67,13 @@ class Battle(object):
                 while ply.get_moves_left():
                 
                     if ply.get_type() == 0:
-                        npt_txt = raw_input("--> ") # FIXME # TODO # count down!
+                        npt_txt = raw_input("--> ")
                     elif ply.get_type() == 1:
-                        npt_txt = choice(["pass", "d 0"]) # hehe
+                        npt_txt = choice(["pass", "d 0", "l 0 0 2", "l 0 2 3", "l 0 1 0", "l 0 3 2"]) # hehe # TODO AI module
                         
                     if me.npt(self, ply, npt_txt) == True: # False if command is a bunch of malarki
                         ply.moves_left_equals_minus_one()
                     print "%s has %d moves left.\n" % (ply.get_name(), ply.get_moves_left())
                     
             self.update()
+            self.next_round()

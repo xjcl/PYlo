@@ -1,0 +1,27 @@
+usage notes:
+
+During a battle, you can input the following commands:
+
+information:
+cih - print the number of cards in the hands of the various players
+cid - print the number of cards in the decks of the various players
+h - print the names of the cards in your hand
+i [num] - print information on the [num]th card in your hand
+i [name] - print information on the card named [name]
+f - print the field
+
+actions:
+p - pass
+d [num] - discard the [num]th card in your hand and draw three from your deck
+l [num] [y] [x] - lay the [num]th card in your hand onto the square with the address [y] [x]
+
+exit:
+e - exit - q - quit - exits the program
+
+
+
+
+
+rules notes:
+
+1. An isolated #FOODCHAIN 1 card cannot survive. This is because there are no terrain or climate matches (unlike with the home card). This apparently contradicts the canonical rules (http://phylomon.forumotion.net/t104-playtest-rules-questions#933).

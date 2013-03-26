@@ -62,12 +62,24 @@ class Entity(object):
         def get_owner(self):
             return self.owner
             
+        def get_card(self, pnum):
+            if 0 <= pnum and pnum < self.get_size():
+                return self.cont[pnum]
+            else:
+                return False
+            
         def draw(self, pl):
             self.cont.append(pl)
 
         def pop(self, pnum):
-            if 0 <= pnum < self.get_size():
+            if 0 <= pnum and pnum < self.get_size():
                 return self.cont.pop(pnum)
+            else:
+                return False
+                
+        def insert(self, pnum, pwhat):
+            if 0 <= pnum and pnum <= self.get_size():
+                self.cont.insert(pnum, pwhat)
             else:
                 return False
                 

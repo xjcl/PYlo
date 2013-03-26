@@ -4,6 +4,7 @@ from se import Square
 class Field(object):
     def __init__(self, phomes):
         self.homes = phomes
+        self.has_pollinator = False
         if len(self.homes) == 2: # len(self.homes) == number of players
             self.data = \
             [[Square(self, 0, 0, None), Square(self, 0, 1, None),
@@ -14,6 +15,32 @@ class Field(object):
             \
             [Square(self, 2, 0, None), Square(self, 2, 1, None),
             Square(self, 2, 2, None), Square(self, 2, 3, None)]]
+        if len(self.homes) == 4: # len(self.homes) == number of players
+            self.data = \
+            [[Square(self, 0, 0, None), Square(self, 0, 1, None),
+            Square(self, 0, 2, None), Square(self, 0, 3, None)], 
+            \
+            [Square(self, 1, 0, None), Square(self, 1, 1, phomes[0]),
+            Square(self, 1, 2, phomes[1]), Square(self, 1, 3, None)],
+            \
+            [Square(self, 2, 0, None), Square(self, 2, 1, phomes[2]),
+            Square(self, 2, 2, phomes[3]), Square(self, 2, 3, None)],
+            \
+            [Square(self, 3, 0, None), Square(self, 3, 1, None),
+            Square(self, 3, 2, None), Square(self, 3, 3, None)]]
+    
+    def has_pollinator():
+        return self.has_pollinator
+        
+    def set_pollinator(pbool):
+        self.has_pollinator = pbool
+        
+    def check_pollinator():
+        self.has_pollinator = False
+        for row in self.data:
+            for sq in row:
+                if sq.get_stack.get_phylo().is_pollinator:
+                    self.has_pollinator = True
         
     def extend_right(self):
         for i in range(len(self.data)):
@@ -29,15 +56,13 @@ class Field(object):
             for sq in rw:
                 sq.set_x(sq.get_x()+1)
         for i in range(len(self.data)):
-            self.data[i].insert(0, Square(self, i, 0, None)) # FIXME TODO !!!
+            self.data[i].insert(0, Square(self, i, 0, None))
     
     def extend_up(self):
-        print self.data
         for rw in self.data:
             for sq in rw:
                 sq.set_y(sq.get_y()+1)
-        print self.data
-        self.data.insert(0, []) # FIXME TODO !!!
+        self.data.insert(0, [])
         for i in range(len(self.data[1])):
             self.data[0].append(Square(self, 0, i, None))
             
@@ -51,9 +76,15 @@ class Field(object):
         if px == len(self.data[0])-1:
             self.extend_right()
             
+    def check_all_phylo(self):
+        for row in self.data:
+            for sq in row:
+                lPhylo_card = sq.get_stack().get_phylo_card() # I have no idea what I did there in se.py
+                if not sq.check_phylo(lPhylo_card):
+                    sq.pop_phylo_card()
+       
     def square_exits(self, py, px):
-        return 0 <= py < len(self.data) and 0 <= px < len(self.data[0]) # FIXME # is_number()
-        # ^implement instead of "try:" ? # TODO
+        return 0 <= py < len(self.data) and 0 <= px < len(self.data[0]) # isnumber() in me.py
     
     def pprint(self):
         dat = []
